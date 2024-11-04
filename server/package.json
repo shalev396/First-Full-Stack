@@ -1,0 +1,22 @@
+{
+  "name": "exercies",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "This project is a Node.js API developed to manage jokes, users, and products, transitioning from in-memory storage to JSON files, and ultimately to MongoDB for persistence. The project explores key concepts in modularization, middleware, and database integration.",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cros": "^1.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.7.3",
+    "morgan": "^1.10.0"
+  }
+}

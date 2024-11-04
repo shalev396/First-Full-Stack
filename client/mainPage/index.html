@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework API Operations</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>API Homework</h1>
+    </header>
+    <main>
+      <div class="jokes">
+        <h1>Jokes</h1>
+        <div class="login">
+          <p>name:</p>
+          <input type="text" id="nameInput" />
+          <p>email:</p>
+          <input type="text" id="emailInput" /><!--email-->
+          <p>password:</p>
+          <input type="password" id="passwordInput" />
+          <button id="loginButton">login / signup / change user</button>
+        </div>
+
+        <table id="tablejokes">
+          <tr>
+            <th class="id">ID</th>
+            <th class="setup">Setup</th>
+            <th class="punchline">Punchline</th>
+            <th class="createdAt">Created At</th>
+            <th class="createdBy">Created By</th>
+          </tr>
+        </table>
+        <div class="joke">
+          <!--joke-->
+          <p>setup:</p>
+          <input type="text" id="setupInput" />
+          <p>punchline:</p>
+          <input type="text" id="punchlineInput" />
+
+          <button id="JokeButton">add joke</button>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./view.js"></script>
+  </body>
+</html>

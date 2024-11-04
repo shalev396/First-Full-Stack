@@ -1,0 +1,81 @@
+:root {
+  --color-background: hsl(0, 0%, 98%);
+  --color-text: hsl(200, 15%, 8%);
+  --color-elements: hsl(0, 0%, 100%);
+  --color-input: var(); /***/
+  /* --font-weight: 600; */
+  --border-radius: 5px;
+  --box-shadow: 0px 0px 1rem hsla(0, 0%, 0%, 0.1);
+  --gap-items: 50px;
+  --width-items: 150px;
+  --font-size: 16px;
+  --padding: 5px;
+}
+@font-face {
+  font-family: Nunito Sans;
+  src: url("./Nunito_Sans/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf");
+}
+
+* {
+  font-family: Nunito Sans;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: var(--font-size);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+header {
+  background-color: var(--color-elements);
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+div.jokes {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: var(--box-shadow);
+}
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+div.login,
+div.joke {
+  display: flex;
+  flex-direction: column;
+}
+div.joke {
+  display: none;
+}
