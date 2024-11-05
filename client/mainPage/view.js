@@ -1,4 +1,6 @@
 // TODO: add Zod
+import controller from "./controller.js";
+import model from "./model.js";
 
 // Elements
 const tableJokes = document.getElementById("tablejokes");
@@ -9,57 +11,33 @@ const passwordInput = document.getElementById("passwordInput");
 const JokeButton = document.getElementById("JokeButton");
 const setupInput = document.getElementById("setupInput");
 const punchlineInput = document.getElementById("punchlineInput");
+const jokeForm = document.getElementById("jokeForm");
 
 let jokes = [];
-let users = [];
 let user;
 let joke;
+//login/signup
+loginButton.addEventListener("click", async () => {
+  let loginAttempt = {
+    name: nameInput.value,
+    email: emailInput.value,
+    password: passwordInput.value,
+  };
 
-loginButton.addEventListener("click", () => {
-  axios
-    .get("http://localhost:3006/api/users")
-    .then(function (response) {
-      let login = false;
-      users = response.data;
-      for (let i = 0; i < users.length; i++) {
-        if (
-          users[i].name === nameInput.value &&
-          users[i].email === emailInput.value &&
-          users[i].password === passwordInput.value
-        ) {
-          login = true;
-          user = users[i];
-          console.log(user);
-        }
-      }
-      if (!login) {
-        axios
-          .post("http://localhost:3006/api/users", {
-            name: nameInput.value,
-            email: emailInput.value,
-            password: passwordInput.value,
-          })
-          .then(function (response) {
-            console.log(response.data);
-            user = response.data;
-          });
-      }
-      ///unhide
-    })
-    .catch(function (error) {
-      console.error("Error fetching data:", error);
-    });
+  user = await controller.logIn(loginAttempt);
+
+  if (user === undefined) {
+    user = await model.createUser(loginAttempt);
+  }
+  jokeForm.style.display = "flex";
 });
-axios
-  .get("http://localhost:3006/api/jokes")
-  .then(function (response) {
-    jokes = response.data;
-    renderJokesTable(jokes);
-    console.log(response.data);
-  })
-  .catch(function (error) {
-    console.error("Error fetching data:", error);
-  });
+async function getJokes() {
+  //jokes array
+  jokes = await model.getAllJokes();
+
+  renderJokesTable(jokes);
+}
+getJokes();
 
 function renderJokesTable(jokesToRender) {
   tableJokes.innerHTML = `
@@ -84,14 +62,14 @@ function renderJokesTable(jokesToRender) {
     tableJokes.appendChild(row);
   });
 }
-function addJoke() {
-  axios
-    .post("http://localhost:3006/api/jokes", {
-      setup: setupInput.value,
-      punchline: punchlineInput.value,
-    })
-    .then(function (response) {
-      console.log(response.data);
-      joke = response.data;
-    });
-}
+//add joke
+JokeButton.addEventListener("click", async function () {
+  joke = {
+    setup: setupInput.value,
+    punchline: punchlineInput.value,
+    createdBy: user._id,
+  };
+  joke = await model.addJoke(joke);
+  jokes.push(joke);
+  renderJokesTable(jokes);
+});

@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "This project is a Node.js API developed to manage jokes, users, and products, transitioning from in-memory storage to JSON files, and ultimately to MongoDB for persistence. The project explores key concepts in modularization, middleware, and database integration.",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "cros": "^1.0.1",
     "dotenv": "^16.4.5",

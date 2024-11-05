@@ -40,4 +40,3 @@ app.use("/api/products", productsRoutes);
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-// TODO: add postman screenshots to V1
